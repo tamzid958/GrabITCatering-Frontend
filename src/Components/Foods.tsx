@@ -24,7 +24,7 @@ export default function Foods(props : any){
                                     alt={food.title}
                                     height="140"
                                     image={food.img}
-                                    title="Contemplative Reptile"
+                                    title={food.title}
                                 />
                                 <CardContent style={{
                                      textAlign:'center'
