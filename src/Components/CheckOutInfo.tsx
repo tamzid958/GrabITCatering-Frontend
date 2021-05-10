@@ -13,7 +13,7 @@ import Orange from "@material-ui/core/colors/orange";
 import React from "react";
 
 export default function CheckOutInfo(){
-    const [value, setValue] = React.useState('Cash on delivery');
+    const [value, setValue] = React.useState('Cash on Delivery');
     const [state, setState] = React.useState({checkedAgreement: true});
     const handleChangeDeliveryMethod = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue((event.target as HTMLInputElement).value);
@@ -136,20 +136,23 @@ export default function CheckOutInfo(){
                                 marginTop: 20
                             }}>
                                 <RadioGroup aria-label="paymentMethod" name="paymentMethod" value={value} onChange={handleChangeDeliveryMethod}>
-                                    <FormControlLabel value="Cash on delivery" control={<Radio />} label="Cash on delivery" />
-                                    <FormControlLabel value="Pay First via Bkash" control={<Radio />} label="Pay First via Bkash" />
+                                    <FormControlLabel value="Cash on Delivery" control={<Radio />} label="Cash on Delivery" />
+                                    <FormControlLabel value="Online Payment" control={<Radio />} label="Online Payment" />
                                 </RadioGroup>
                             </FormControl>
-                            {(value==="Pay First via Bkash")?
+                            {(value==="Online Payment")?
                                 <div>
-                                    <TextField label="Bkash Number" variant="outlined"
-                                               style={{width: "100%", marginTop: 20}} color="secondary" />
-                                    <TextField label="Transaction ID" variant="outlined"
-                                               style={{width: "100%", marginTop: 20}} color="secondary" />
-                                </div>: <div/>
+                                    <Typography variant="body2">
+                                        A pop will be shown. Choose your preferred payment method.
+                                        After successful payment, you will receive message about the transaction.
+                                    </Typography>
+                                </div>: null
                             }
                             <FormControlLabel style={{ marginTop: 20 }}
-                                              control={<Checkbox checked={state.checkedAgreement} onChange={handleChangeAgreement} name="checkedAgreement" />}
+                                              control={<Checkbox
+                                                  checked={state.checkedAgreement}
+                                                  onChange={handleChangeAgreement}
+                                                  name="checkedAgreement" />}
                                               label={
                                                   <Typography variant="body2">
                                                       I have read and agree to the website terms and conditions
@@ -164,7 +167,7 @@ export default function CheckOutInfo(){
                                         fontWeight: "bold",
                                         color: "whitesmoke",
                                         width: "100%"
-                                    }} href="/">Place Order </Button>
+                                    }} href="/">{(value==="Online Payment")? "Pay Online" : "Place Order"} </Button>
                         </CardActions>
                     </Card>
                 </Grid>
