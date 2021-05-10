@@ -3,7 +3,7 @@ import GrabitLogo from "../Assets/images/Grabit_Logo.png";
 import FastFoodOutlinedIcon from '@material-ui/icons/FastfoodOutlined';
 import PermPhoneMsgRoundedIcon from '@material-ui/icons/PermPhoneMsgRounded';
 import LocalMallRoundedIcon from'@material-ui/icons/LocalMallRounded';
-import Yellow from "@material-ui/core/colors/yellow";
+import Orange from "@material-ui/core/colors/orange";
 import {Link} from 'react-router-dom';
 export default function Navbar(){
     return (
@@ -52,7 +52,7 @@ export default function Navbar(){
                         <IconButton href="/cart">
                             <Badge badgeContent={4} max={10} color="secondary">
                                 <LocalMallRoundedIcon fontSize="large" style={{
-                                    color: Yellow[900],
+                                    color: Orange[700],
                                 }}/>
                             </Badge>
                         </IconButton>

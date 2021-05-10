@@ -2,6 +2,7 @@ import ChefImg from "../Assets/images/pexels-pietro-jeng-671956.jpg";
 import {Card, CardContent, CardMedia, Container, Grid, IconButton, Typography} from "@material-ui/core";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import CookVideo from "../Assets/videos/1507620040.webm";
+import Orange from "@material-ui/core/colors/orange";
 
 export default function VideoCover(){
     return(
@@ -24,7 +25,7 @@ export default function VideoCover(){
                                         <IconButton aria-label="play/pause">
                                             <PlayCircleOutlineIcon style={{
                                                 fontSize: 40,
-                                                color: "black"
+                                                color: Orange[700]
                                             }}/>
                                         </IconButton>
                                     </Grid>
