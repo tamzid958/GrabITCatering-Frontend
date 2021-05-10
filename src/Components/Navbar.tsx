@@ -23,19 +23,26 @@ export default function Navbar(){
                                 <FastFoodOutlinedIcon/>
                             </Grid>
                             <Grid item xs={11} sm={11}>
-                                <Typography variant="body2">
+                                <MaterialLink variant="body2" href="https://maps.app.goo.gl/ix4n9fegmsjQ7tbB9"
+                                target="_blank"  color="textPrimary" style={{
+                                    textDecoration: "none"
+                                }}>
                                     Block E, Road 2, House 10
                                     Rupnagar, Mirpur, Dhaka 1216
-                                </Typography>
+                                </MaterialLink>
                             </Grid>
                             <Grid item xs={1} sm={1}>
                                 <PermPhoneMsgRoundedIcon/>
                             </Grid>
                             <Grid item xs={11} sm={11}>
-                                <MaterialLink href="tel:+880-1883-960093" variant="body2" color="textPrimary">
+                                <MaterialLink href="tel:+880-1883-960093" variant="body2" color="textPrimary" style={{
+                                    textDecoration: "none"
+                                }}>
                                     +880-1883-960093
                                 </MaterialLink> /
-                                <MaterialLink href="tel:+880-1777537411" variant="body2" color="textPrimary">
+                                <MaterialLink href="tel:+880-1777537411" variant="body2" color="textPrimary" style={{
+                                    textDecoration: "none"
+                                }}>
                                     +880-1777537411
                                 </MaterialLink>
                             </Grid>
