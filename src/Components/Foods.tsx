@@ -9,20 +9,19 @@ import {
     Typography,
     Link
 } from "@material-ui/core";
-import {foods} from "../Data/foods";
 import Orange from "@material-ui/core/colors/orange";
 
-export default function Foods(){
+export default function Foods(props : any){
     return(
         <Container fixed style={{ marginTop: 50 }}>
             <Grid container spacing={5}>
-                {foods.map((food) => (
+                {props.foods.map((food : any) => (
                     <Grid item xs={6} sm={3} key={food.id}>
                         <Card>
                             <CardActionArea href={`/food/${food.id}`}>
                                 <CardMedia
                                     component="img"
-                                    alt="Contemplative Reptile"
+                                    alt={food.title}
                                     height="140"
                                     image={food.img}
                                     title="Contemplative Reptile"

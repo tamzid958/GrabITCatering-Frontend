@@ -4,6 +4,7 @@ import Foods from "../Components/Foods";
 import { Hidden, Typography } from "@material-ui/core";
 import Footer from "../Components/Footer";
 import VideoCover from "../Components/VideoCover";
+import {foods} from "../Data/foods";
 export default function HomePage(){
     return(
     <div>
@@ -16,7 +17,7 @@ export default function HomePage(){
         }}>
             Browse Foods
         </Typography>
-        <Foods/>
+        <Foods foods={foods}/>
         <Hidden only={['sm', 'md', 'xs']}>
             <VideoCover/>
         </Hidden>

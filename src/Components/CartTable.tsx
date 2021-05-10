@@ -11,10 +11,9 @@ import {
     TableHead,
     TableRow, TextField, Typography
 } from "@material-ui/core";
-import {foods} from "../Data/foods";
 import Orange from "@material-ui/core/colors/orange";
 
-export default function CartTable(){
+export default function CartTable(props : any){
     return(
         <Container fixed style={{marginTop: 50}}>
             <Grid container spacing={3}>
@@ -30,7 +29,7 @@ export default function CartTable(){
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {foods.map((food) => (
+                                {props.foods.map((food : any) => (
                                     <TableRow key={food.id}>
                                         <TableCell align="left" component="th" scope="row">
                                             {food.title}

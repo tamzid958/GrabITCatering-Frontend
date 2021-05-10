@@ -4,6 +4,7 @@ import FoodDisplay from "../Components/FoodDisplay";
 import DescriptionAndReview from "../Components/DescriptionAndReview";
 import {Container, Typography} from "@material-ui/core";
 import Foods from "../Components/Foods";
+import {foods} from "../Data/foods";
 
 
 export default function FoodPage(){
@@ -19,7 +20,7 @@ export default function FoodPage(){
                     Related Foods
                 </Typography>
             </Container>
-            <Foods/>
+            <Foods foods={foods}/>
             <Footer/>
         </div>
     );
