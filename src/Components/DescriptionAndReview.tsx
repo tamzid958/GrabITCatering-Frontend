@@ -5,13 +5,13 @@ import Orange from "@material-ui/core/colors/orange";
 import Rating from '@material-ui/lab/Rating';
 import {customIcons, IconContainer} from "../Interfaces/RatingBar";
 
-export default function DescriptionAndReview(){
+export default function DescriptionAndReview(props: any){
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
-
+    console.log(props.food.id);
     return(
         <Container fixed style={{ marginTop: 50 }}>
             <Paper square>
