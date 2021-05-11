@@ -69,7 +69,6 @@ export default function Footer(){
                     </Grid>
                 </Grid>
             </Container>
-
             <Card style={{
                 marginTop: 50,
                 paddingLeft: 50,

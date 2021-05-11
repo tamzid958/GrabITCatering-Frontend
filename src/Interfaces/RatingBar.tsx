@@ -6,7 +6,14 @@ import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAltO
 import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
 import {IconContainerProps} from "@material-ui/lab/Rating";
 
-export const customIcons: { [index: string]: { icon: React.ReactElement; label: string } } = {
+interface IRatingIcons{
+    [index: string] : {
+     icon: React.ReactElement,
+     label : string,
+    }
+}
+
+export const customIcons: IRatingIcons = {
     1: {
         icon: <SentimentVeryDissatisfiedIcon  style={{ fontSize: 30 }} />,
         label: 'Very Dissatisfied',

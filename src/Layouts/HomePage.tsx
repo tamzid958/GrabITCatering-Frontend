@@ -5,11 +5,14 @@ import { Hidden, Typography } from "@material-ui/core";
 import Footer from "../Components/Footer";
 import VideoCover from "../Components/VideoCover";
 import {allFoods} from "../Data/foods";
+import React from "react";
+import {allFoodCategories} from "../Data/foodCategories";
+
 export default function HomePage(){
     return(
     <div>
         <Navbar/>
-        <FoodCategories/>
+        <FoodCategories foodCategories={allFoodCategories}/>
         <Typography variant="h3" align="center" style={{
             marginTop: 50,
             fontWeight: "bolder",
