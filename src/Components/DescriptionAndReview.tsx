@@ -11,6 +11,7 @@ export default function DescriptionAndReview(props: any){
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
+
     console.log(props.food.id);
     return(
         <Container fixed style={{ marginTop: 50 }}>
