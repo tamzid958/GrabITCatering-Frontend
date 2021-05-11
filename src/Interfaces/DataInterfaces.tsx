@@ -1,12 +1,13 @@
 export interface IFood {
     id: number,
     img: string,
-    category: string,
-    categoryId: number,
     title: string,
     price: number,
     avgReview: number,
-    available: boolean
+    available: boolean,
+    description: string,
+    categoryName: string,
+    categoryId: number,
 }
 
 export interface IFoodCategory{

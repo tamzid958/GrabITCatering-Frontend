@@ -14,8 +14,9 @@ export default function CategorizedFoodPage(){
     let categorizedFoods : IFood[] = [];
     let foodCategory = getFoodCategoryInformation(allFoodCategories, Number(id));
     if(foodCategory === undefined) return (<Redirect to={"/"}/>);
+
     categorizedFoods = getCategorizedFoodInformation(allFoods, foodCategory.id);
-    console.log(categorizedFoods);
+
     return(
         <div>
             <Navbar/>

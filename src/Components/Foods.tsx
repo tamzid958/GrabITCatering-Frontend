@@ -30,7 +30,7 @@ export default function Foods(props : any){
                                      textAlign:'center'
                                 }}>
                                     <Typography gutterBottom variant="body2" component="p" color="textSecondary">
-                                        {food.category} ft. Grabit!
+                                        {food.categoryName} ft. Grabit!
                                     </Typography>
                                     <Typography variant="h6" component="h2" style={{
                                         fontWeight: "bold",

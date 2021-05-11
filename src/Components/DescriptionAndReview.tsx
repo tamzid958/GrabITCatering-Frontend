@@ -29,9 +29,7 @@ export default function DescriptionAndReview(props: any){
             </Paper>
                 <TabPanel value={value} index={0}>
                     <Typography variant="body1">
-                        Grab the all-new crispy crunch; minced beef all over and now,
-                        bashed with more cheese to give you foodgasm in every bite.
-                        Grab your Ozy crunch, now!
+                        {props.food.description}
                     </Typography>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
@@ -50,7 +48,7 @@ export default function DescriptionAndReview(props: any){
                                     backgroundColor: Orange[700],
                                     fontWeight: "bold",
                                     color: "whitesmoke",
-                                }} href="#">Give A Review
+                                }}>Give A Review
                         </Button>
                     </div>
                 </TabPanel>
