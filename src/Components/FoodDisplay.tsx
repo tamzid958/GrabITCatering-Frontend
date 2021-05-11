@@ -53,7 +53,7 @@ export default function FoodDisplay(){
                                 marginTop: 20,
                             }} >
                                 <Grid item xs={3}>
-                                    <TextField required={true} defaultValue={1}
+                                    <TextField required={true} value={1}
                                                {...register("quantity",{ min: 1 })} type="number"
                                                label="Quantity" variant="outlined" color="secondary"
                                                InputProps={{

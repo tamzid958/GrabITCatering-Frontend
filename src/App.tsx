@@ -1,7 +1,7 @@
 import React from 'react';
 import './Assets/css/App.css';
 import GrabitRouter from "./Router/Router";
-import {MuiThemeProvider, createMuiTheme} from "@material-ui/core";
+import {MuiThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 import Yellow from "@material-ui/core/colors/yellow";
 import Grey from "@material-ui/core/colors/grey";
 
