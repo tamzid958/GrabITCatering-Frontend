@@ -14,6 +14,7 @@ export default function FoodDisplay(){
     const [open, addedToCart] = React.useState(false);
     const { register,  formState: { errors }, handleSubmit } = useForm<QuantityFormInput>();
     const onSubmit = (data: QuantityFormInput) =>{
+        data.foodId = 1;
         if(data.quantity === undefined) data.quantity = 1;
         addedToCart(true);
         console.log(data);
@@ -49,7 +50,6 @@ export default function FoodDisplay(){
                             over and now, bashed with more cheese to give you
                             foodgasm in every bite. Grab your Ozy crunch, now!
                         </Typography>
-                            <input type="hidden" value={1} {...register("foodId")}/>
                             <Grid container spacing={2} style={{
                                 marginTop: 20,
                             }} >
