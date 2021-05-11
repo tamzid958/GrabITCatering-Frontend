@@ -14,7 +14,7 @@ export function addToCart(foodId: number, quantity: number) : ICartFood{
     return {foodId, quantity};
 }
 
-export function getCartFoods() : ICartFood[]{
+export function getCartFoods() : IFakeFood[]{
     let id: number = 1;
 
     let cartFoods : IFakeFood[] = [];
