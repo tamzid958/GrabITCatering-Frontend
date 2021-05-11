@@ -1,27 +1,26 @@
-import {Box, Button, Collapse, Container, Grid, IconButton, TextField, Typography} from "@material-ui/core";
+import {Box, Button, Container, Grid, TextField, Typography} from "@material-ui/core";
 import Orange from "@material-ui/core/colors/orange";
 import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
-import {Alert} from "@material-ui/lab";
-import CloseIcon from '@material-ui/icons/Close';
+
 import React from "react";
-import {Link} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Red from "@material-ui/core/colors/red";
 import {QuantityFormInput} from "../Interfaces/FormInterfaces";
 import {addToCart} from "../Data/cartFoods";
 import {IFood} from "../Interfaces/DataInterfaces";
+import {toast, ToastContainer} from "react-toastify";
 
 export default function FoodDisplay(props: {food: IFood}){
-    const [open, addedToCart] = React.useState(false);
     const { register,  formState: { errors }, handleSubmit } = useForm<QuantityFormInput>();
     const onSubmit = (data: QuantityFormInput) =>{
         data.foodId = props.food.id;
         if(data.quantity === undefined) data.quantity = 1;
-        addedToCart(true);
         console.log(addToCart(data.foodId, data.quantity));
+        toast.success("Added to cart.");
     }
     return (
         <Container fixed style={{ marginTop: 50 }}>
+            <ToastContainer />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={6}>
                     <Grid item xs={12} sm={6}>
@@ -109,23 +108,6 @@ export default function FoodDisplay(props: {food: IFood}){
                             </Typography>
                             <SentimentVerySatisfiedIcon style={{ fontSize: 20, color: Orange[700], }} />
                         </div>
-                        <Collapse in={open}>
-                            <Alert
-                                action={
-                                    <IconButton
-                                        aria-label="close"
-                                        color="inherit"
-                                        size="small"
-                                        onClick={() => {
-                                            addedToCart(false);
-                                        }}
-                                    >
-                                        <CloseIcon fontSize="inherit" />
-                                    </IconButton>
-                                }>
-                                Added To Cart. <Link to="/cart">Check Cart</Link>
-                            </Alert>
-                        </Collapse>
                     </Grid>
                 </Grid>
             </form>

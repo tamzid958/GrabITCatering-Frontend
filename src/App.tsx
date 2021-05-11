@@ -1,5 +1,6 @@
 import React from 'react';
 import './Assets/css/App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import GrabitRouter from "./Router/Router";
 import {MuiThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 import Yellow from "@material-ui/core/colors/yellow";
