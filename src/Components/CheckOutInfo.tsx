@@ -1,10 +1,15 @@
 import {
-    Box, Button,
-    Card, CardActions,
-    CardContent, Checkbox,
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Checkbox,
     Container,
-    FormControl, FormControlLabel,
-    Grid, Radio,
+    FormControl,
+    FormControlLabel,
+    Grid,
+    Radio,
     RadioGroup,
     TextField,
     Typography
@@ -28,7 +33,10 @@ export default function CheckOutInfo(){
     };
 
     const { register,  formState: { errors }, handleSubmit } = useForm<CheckOutFormInput>();
-    const onSubmit = (data: CheckOutFormInput) => console.log(data);
+    const onSubmit = (data: CheckOutFormInput) => {
+        if(data.paymentMethod === undefined) data.paymentMethod = PaymentMethodEnum.cashOnDelivery;
+        console.log(data)
+    };
 
     return(
         <Container fixed style={{ marginTop: 50 }}>
@@ -170,7 +178,7 @@ export default function CheckOutInfo(){
                                 <FormControl component="fieldset" style={{
                                     marginTop: 20
                                 }}>
-                                    <RadioGroup aria-label="paymentMethod" {...register("paymentMethod")}
+                                    <RadioGroup aria-label="paymentMethod" {...register("paymentMethod")} value={value.paymentMethod}
                                                 name="paymentMethod" onChange={handleChangeValue}>
                                         <FormControlLabel value={PaymentMethodEnum.cashOnDelivery} control={<Radio required={true} />} label="Cash on Delivery" />
                                         <FormControlLabel value={PaymentMethodEnum.onlinePayment} control={<Radio required={true} />} label="Online Payment" />

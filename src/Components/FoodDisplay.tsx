@@ -14,6 +14,7 @@ export default function FoodDisplay(){
     const [open, addedToCart] = React.useState(false);
     const { register,  formState: { errors }, handleSubmit } = useForm<QuantityFormInput>();
     const onSubmit = (data: QuantityFormInput) =>{
+        if(data.quantity === undefined) data.quantity = 1;
         addedToCart(true);
         console.log(data);
     }
