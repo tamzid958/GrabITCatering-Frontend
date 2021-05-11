@@ -2,18 +2,22 @@ import {
     Box, Button,
     Card, CardActions, CardContent,
     Container,
-    Grid,
+    Grid, Hidden,
     Paper,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
-    TableRow, TextField, Typography
+    TableRow, Typography
 } from "@material-ui/core";
 import Orange from "@material-ui/core/colors/orange";
+import {IFakeFood} from "../Interfaces/DataInterfaces";
+import {shippingCost} from "../Data/shippingCost";
 
-export default function CartTable(props : any){
+export default function CartTable(props : {foods: IFakeFood[]}){
+    let subTotal : number = 0;
+
     return(
         <Container fixed style={{marginTop: 50}}>
             <Grid container spacing={3}>
@@ -24,25 +28,20 @@ export default function CartTable(props : any){
                                 <TableRow>
                                     <TableCell align="left">Food</TableCell>
                                     <TableCell align="left">Price</TableCell>
-                                    <TableCell align="center">Quantity</TableCell>
+                                    <TableCell align="left">Quantity</TableCell>
                                     <TableCell align="left">SubTotal</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {props.foods.map((food : any) => (
+                                {props.foods.map((food : IFakeFood) => (
                                     <TableRow key={food.id}>
-                                        <TableCell align="left" component="th" scope="row">
+                                        <TableCell align="left">
                                             {food.title}
                                         </TableCell>
                                         <TableCell align="left">৳ {food.price}</TableCell>
-                                        <TableCell align="center">
-                                            <TextField defaultValue={1} type="number"
-                                                       label="Quantity" variant="outlined" color="secondary"
-                                                       InputProps={{
-                                                           inputProps: { min: 1 }
-                                                       }}/>
-                                        </TableCell>
-                                        <TableCell align="left">৳ {food.price}</TableCell>
+                                        <TableCell align="left">{food.quantity}</TableCell>
+                                        <TableCell align="left">৳ {food.price * food.quantity}</TableCell>
+                                        <Hidden xsUp>{subTotal += food.price * food.quantity}</Hidden>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -70,7 +69,7 @@ export default function CartTable(props : any){
                                     <Typography variant="h5" component="h2" style={{
                                         fontWeight: "bold"
                                     }}>
-                                        ৳ 450
+                                        ৳ {subTotal}
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -107,7 +106,7 @@ export default function CartTable(props : any){
                                     <Typography variant="h5" component="h2" style={{
                                         fontWeight: "bold"
                                     }}>
-                                        ৳ 450
+                                        ৳ {subTotal !== 0? (subTotal + shippingCost) : 0}
                                     </Typography>
                                 </Grid>
                             </Grid>

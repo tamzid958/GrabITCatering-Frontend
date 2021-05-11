@@ -8,15 +8,17 @@ import {Link} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Red from "@material-ui/core/colors/red";
 import {QuantityFormInput} from "../Interfaces/FormInterfaces";
+import {addToCart} from "../Data/cartFoods";
+import {IFood} from "../Interfaces/DataInterfaces";
 
-export default function FoodDisplay(props: any){
+export default function FoodDisplay(props: {food: IFood}){
     const [open, addedToCart] = React.useState(false);
     const { register,  formState: { errors }, handleSubmit } = useForm<QuantityFormInput>();
     const onSubmit = (data: QuantityFormInput) =>{
         data.foodId = props.food.id;
         if(data.quantity === undefined) data.quantity = 1;
         addedToCart(true);
-        console.log(data);
+        console.log(addToCart(data.foodId, data.quantity));
     }
     return (
         <Container fixed style={{ marginTop: 50 }}>

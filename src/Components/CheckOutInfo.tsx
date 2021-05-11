@@ -19,9 +19,13 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import Red from "@material-ui/core/colors/red";
 import {CheckOutFormInput, PaymentMethodEnum} from "../Interfaces/FormInterfaces";
+import {shippingCost} from "../Data/shippingCost";
+import {IFakeFood} from "../Interfaces/DataInterfaces";
 
 
-export default function CheckOutInfo(){
+export default function CheckOutInfo(props: {foods: IFakeFood[]}){
+    let subTotal : number = 0;
+
     const [value, setValue] = React.useState({paymentMethod: PaymentMethodEnum.cashOnDelivery});
     const [state, setState] = React.useState({checkedAgreement: true});
 
@@ -37,6 +41,10 @@ export default function CheckOutInfo(){
         if(data.paymentMethod === undefined) data.paymentMethod = PaymentMethodEnum.cashOnDelivery;
         console.log(data)
     };
+
+    props.foods.forEach(function (cartFood : IFakeFood){
+        subTotal += (cartFood.quantity * cartFood.price);
+    });
 
     return(
         <Container fixed style={{ marginTop: 50 }}>
@@ -134,7 +142,7 @@ export default function CheckOutInfo(){
                                         <Typography variant="h5" component="h2" style={{
                                             fontWeight: "bold"
                                         }}>
-                                            ৳ 450
+                                            ৳ {subTotal}
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -171,17 +179,20 @@ export default function CheckOutInfo(){
                                         <Typography variant="h5" component="h2" style={{
                                             fontWeight: "bold"
                                         }}>
-                                            ৳ 450
+                                            ৳ {subTotal !== 0? (subTotal + shippingCost) : 0}
                                         </Typography>
                                     </Grid>
                                 </Grid>
                                 <FormControl component="fieldset" style={{
                                     marginTop: 20
                                 }}>
-                                    <RadioGroup aria-label="paymentMethod" {...register("paymentMethod")} value={value.paymentMethod}
+                                    <RadioGroup aria-label="paymentMethod" {...register("paymentMethod")}
+                                                value={value.paymentMethod}
                                                 name="paymentMethod" onChange={handleChangeValue}>
-                                        <FormControlLabel value={PaymentMethodEnum.cashOnDelivery} control={<Radio required={true} />} label="Cash on Delivery" />
-                                        <FormControlLabel value={PaymentMethodEnum.onlinePayment} control={<Radio required={true} />} label="Online Payment" />
+                                        <FormControlLabel value={PaymentMethodEnum.cashOnDelivery}
+                                                          control={<Radio required={true} />} label="Cash on Delivery" />
+                                        <FormControlLabel value={PaymentMethodEnum.onlinePayment}
+                                                          control={<Radio required={true} />} label="Online Payment" />
                                     </RadioGroup>
                                 </FormControl>
                                 {(value.paymentMethod === PaymentMethodEnum.onlinePayment)?

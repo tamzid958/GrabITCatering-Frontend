@@ -10,12 +10,13 @@ import {
     Link
 } from "@material-ui/core";
 import Orange from "@material-ui/core/colors/orange";
+import {IFood} from "../Interfaces/DataInterfaces";
 
-export default function Foods(props : any){
+export default function Foods(props : { foods: IFood[] }){
     return(
         <Container fixed style={{ marginTop: 50 }}>
             <Grid container spacing={5}>
-                {props.foods.map((food : any) => (
+                {props.foods.map((food : IFood) => (
                     <Grid item xs={6} sm={3} key={food.id}>
                         <Card>
                             <CardActionArea href={`/food/${food.id}`}>

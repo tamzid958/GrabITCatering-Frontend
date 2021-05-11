@@ -16,3 +16,16 @@ export interface IFoodCategory{
     title: string,
     subtitle: string,
 }
+
+export interface ICartFood{
+    foodId: number,
+    quantity: number
+}
+
+export interface IFakeFood{
+    id: number,
+    foodId: number,
+    title: string,
+    price: number,
+    quantity: number,
+}

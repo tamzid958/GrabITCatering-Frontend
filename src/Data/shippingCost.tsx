@@ -1,0 +1,1 @@
+export const shippingCost : number = 50;

@@ -4,8 +4,9 @@ import {
     GridList,
     GridListTile, useMediaQuery, useTheme,
 } from "@material-ui/core";
+import {IFoodCategory} from "../Interfaces/DataInterfaces";
 
-export default function FoodCategories(props : any){
+export default function FoodCategories(props : {foodCategories: IFoodCategory[]}){
     let column = 5;
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -19,7 +20,7 @@ export default function FoodCategories(props : any){
                 flexWrap: "wrap",
                 justifyContent: "center",
             }}>
-                {props.foodCategories.map((foodCategory : any) => (
+                {props.foodCategories.map((foodCategory : IFoodCategory) => (
                     <GridListTile key={foodCategory.id}>
                         <img src={foodCategory.img} alt={foodCategory.title} style={{
                             filter: "blur(3px) brightness(50%)",

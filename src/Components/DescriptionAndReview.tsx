@@ -4,15 +4,15 @@ import {tabProps, TabPanel} from "../Interfaces/TabPanel";
 import Orange from "@material-ui/core/colors/orange";
 import Rating from '@material-ui/lab/Rating';
 import {customIcons, IconContainer} from "../Interfaces/RatingBar";
+import {IFood} from "../Interfaces/DataInterfaces";
 
-export default function DescriptionAndReview(props: any){
+export default function DescriptionAndReview(props: { food: IFood }){
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
 
-    console.log(props.food.id);
     return(
         <Container fixed style={{ marginTop: 50 }}>
             <Paper square>
