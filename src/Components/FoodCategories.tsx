@@ -9,8 +9,7 @@ import {IFoodCategory} from "../Interfaces/DataInterfaces";
 export default function FoodCategories(props : {foodCategories: IFoodCategory[]}){
     let isScreenSmall = false;
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    if(matches) isScreenSmall = true;
+    if(useMediaQuery(theme.breakpoints.down('sm'))) isScreenSmall = true;
     return(
         <Container fixed style={{ marginTop: 50 }}>
             <GridList cellHeight={isScreenSmall? 200 : 500} cols={isScreenSmall? 2 : 5} style={{
