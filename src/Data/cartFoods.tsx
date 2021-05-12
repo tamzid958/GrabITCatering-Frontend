@@ -5,11 +5,11 @@ import {Link} from "@material-ui/core";
 import Grey from "@material-ui/core/colors/grey";
 
 export function addToCart(foodId: number, quantity: number) : ICartFood{
-    let initialSessionCartFoods =  localStorage.getItem("cartFoods");
+    let initialLocalStoredCartFoods =  localStorage.getItem("cartFoods");
     let sessionCartFoods : ICartFood[]= [];
 
-    if(initialSessionCartFoods){
-        sessionCartFoods = JSON.parse(initialSessionCartFoods);
+    if(initialLocalStoredCartFoods){
+        sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
         let existingCartFood = sessionCartFoods.find(e => e.foodId === foodId);
         if(existingCartFood !== undefined){
             let tempQuantity = existingCartFood.quantity + quantity;
@@ -36,18 +36,21 @@ export function addToCart(foodId: number, quantity: number) : ICartFood{
                     textDecoration: "underline"
                 }} href={"/cart"}>Check Cart</Link>
             </div>
-        )});
+        )},
+        {
+            onClose: () => window.location.reload()
+        });
     return {foodId, quantity};
 }
 
 export function getCartFoods() : IFakeFood[]{
-    let initialSessionCartFoods =  localStorage.getItem("cartFoods");
+    let initialLocalStoredCartFoods =  localStorage.getItem("cartFoods");
     let sessionCartFoods : ICartFood[] = [];
     let cartFoods : IFakeFood[] = [];
     let id: number = 1;
 
-    if(initialSessionCartFoods){
-        sessionCartFoods = JSON.parse(initialSessionCartFoods);
+    if(initialLocalStoredCartFoods){
+        sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
     }
 
     sessionCartFoods.forEach(function (cartFood : ICartFood){
@@ -64,18 +67,28 @@ export function getCartFoods() : IFakeFood[]{
 }
 
 export function removeFromCart (id: number){
-    let initialSessionCartFoods =  localStorage.getItem("cartFoods");
+    let initialLocalStoredCartFoods =  localStorage.getItem("cartFoods");
     let sessionCartFoods : ICartFood[] = [];
 
-    if(initialSessionCartFoods){
-        sessionCartFoods = JSON.parse(initialSessionCartFoods);
+    if(initialLocalStoredCartFoods){
+        sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
         let selectedForRemovingCartFood = sessionCartFoods.find(e => e.foodId === id);
         if(selectedForRemovingCartFood !== undefined){
             sessionCartFoods = cartFoodRemoveMethod(sessionCartFoods, selectedForRemovingCartFood);
             localStorage.setItem("cartFoods", JSON.stringify(sessionCartFoods));
-            toast.error("Removed From Cart");
+            toast.error("Removed From Cart", {
+                onClose: () => window.location.reload()
+            });
         }
     }
+}
+export function isEmptyCart() : boolean{
+    let initialLocalStoredCartFoods =  localStorage.getItem("cartFoods");
+    let sessionCartFoods : ICartFood[]= [];
+    if(initialLocalStoredCartFoods){
+        sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
+    }
+    return  sessionCartFoods.length === 0;
 }
 
 function cartFoodRemoveMethod(cartFoods : ICartFood[], cartFood: ICartFood) {

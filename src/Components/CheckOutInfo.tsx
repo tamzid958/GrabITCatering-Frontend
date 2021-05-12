@@ -21,6 +21,7 @@ import Red from "@material-ui/core/colors/red";
 import {CheckOutFormInput, PaymentMethodEnum} from "../Interfaces/FormInterfaces";
 import {shippingCost} from "../Data/shippingCost";
 import {IFakeFood} from "../Interfaces/DataInterfaces";
+import {makeOrder} from "../Data/makeOrder";
 
 
 export default function CheckOutInfo(props: {foods: IFakeFood[]}){
@@ -39,7 +40,7 @@ export default function CheckOutInfo(props: {foods: IFakeFood[]}){
     const { register,  formState: { errors }, handleSubmit } = useForm<CheckOutFormInput>();
     const onSubmit = (data: CheckOutFormInput) => {
         if(data.paymentMethod === undefined) data.paymentMethod = PaymentMethodEnum.cashOnDelivery;
-        console.log(data)
+        makeOrder(data);
     };
 
     props.foods.forEach(function (cartFood : IFakeFood){

@@ -16,7 +16,7 @@ import {IFakeFood} from "../Interfaces/DataInterfaces";
 import {shippingCost} from "../Data/shippingCost";
 import CancelIcon from '@material-ui/icons/Cancel';
 import Red from "@material-ui/core/colors/red";
-import {removeFromCart} from "../Data/cartFoods";
+import {isEmptyCart, removeFromCart} from "../Data/cartFoods";
 export default function CartTable(props : {foods: IFakeFood[]}){
     let subTotal : number = 0;
 
@@ -122,6 +122,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                             </Grid>
                         </CardContent>
                         <CardActions>
+                            {(!isEmptyCart())?
                             <Button size="large" variant="contained"
                                     style={{
                                         marginBottom: 20,
@@ -130,6 +131,13 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                         color: "whitesmoke",
                                         width: "100%"
                                     }} href="/checkout">Proceed to Checkout</Button>
+                            : <Typography variant="h6" style={{
+                                    color: Red[700],
+                                    paddingLeft: "30%"
+                            }}>
+                                Your Cart is Empty
+                                </Typography>
+                            }
                         </CardActions>
                     </Card>
                 </Grid>

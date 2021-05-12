@@ -29,3 +29,21 @@ export interface IFakeFood{
     price: number,
     quantity: number,
 }
+export interface IMakeOrder{
+    orderId : string,
+    foodId: number,
+    quantity: number,
+}
+
+export interface  ICollectionOrder{
+    orderId: string,
+    firstName: string,
+    lastName: string,
+    companyName?: string,
+    streetAddress: string,
+    phone: string,
+    email: string,
+    notes?: string,
+    paymentMethod: string,
+    transactionId?: string,
+}
