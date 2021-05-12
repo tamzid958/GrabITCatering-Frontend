@@ -18,7 +18,7 @@ export default function FoodPage(){
     let food = getFoodInformation(allFoods, Number(id));
     if(food === undefined) return (<Redirect to={"/"}/>);
     relatedFoods = getCategorizedFoodInformation(allFoods, food.categoryId);
-    let seo : Iseo = {title: food.title, description: food.description, img: "https://" + (window.location.hostname + food.img)};
+    let seo : Iseo = {title: food.title, description: food.description, img: (window.location.origin + food.img)};
 
     return (
         <div>
