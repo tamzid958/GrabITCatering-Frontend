@@ -16,7 +16,7 @@ import {IFakeFood} from "../Interfaces/DataInterfaces";
 import {shippingCost} from "../Data/shippingCost";
 
 export default function CartTable(props : {foods: IFakeFood[]}){
-    let subTotal : number = 0;
+    let subTotal : number = 0.00;
 
     return(
         <Container fixed style={{marginTop: 50}}>
@@ -106,7 +106,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     <Typography variant="h5" component="h2" style={{
                                         fontWeight: "bold"
                                     }}>
-                                        ৳ {subTotal !== 0? (subTotal + shippingCost) : 0}
+                                        ৳ {subTotal !== 0.00? (subTotal + shippingCost) : 0.00}
                                     </Typography>
                                 </Grid>
                             </Grid>

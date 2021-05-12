@@ -5,7 +5,19 @@ import PermPhoneMsgRoundedIcon from '@material-ui/icons/PermPhoneMsgRounded';
 import LocalMallRoundedIcon from'@material-ui/icons/LocalMallRounded';
 import Orange from "@material-ui/core/colors/orange";
 import {Link} from 'react-router-dom';
+import {getCartFoods} from "../Data/cartFoods";
+import {IFakeFood} from "../Interfaces/DataInterfaces";
+
 export default function Navbar(){
+    let quantity = 0;
+    let subTotal = 0.00;
+    let cartFoods : IFakeFood[] = getCartFoods();
+
+    cartFoods.forEach(function (cartFood : IFakeFood){
+        subTotal += (cartFood.quantity * cartFood.price);
+        quantity += cartFood.quantity;
+    });
+
     return (
         <AppBar position="sticky" color="default" style={{
             paddingTop: 10
@@ -52,12 +64,12 @@ export default function Navbar(){
                         <Typography variant="h6" style={{
                             fontWeight: "bolder"
                         }}>
-                            ৳ 0.00
+                            ৳ {subTotal}
                         </Typography>
                     </Grid>
                     <Grid item>
                         <IconButton href="/cart">
-                            <Badge badgeContent={4} max={10} color="secondary">
+                            <Badge badgeContent={quantity} max={10} color="secondary">
                                 <LocalMallRoundedIcon fontSize="large" style={{
                                     color: Orange[700],
                                 }}/>
