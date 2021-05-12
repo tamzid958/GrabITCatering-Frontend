@@ -2,7 +2,7 @@ import {
     Box, Button,
     Card, CardActions, CardContent,
     Container,
-    Grid, Hidden,
+    Grid, Hidden, IconButton,
     Paper,
     Table,
     TableBody,
@@ -14,7 +14,9 @@ import {
 import Orange from "@material-ui/core/colors/orange";
 import {IFakeFood} from "../Interfaces/DataInterfaces";
 import {shippingCost} from "../Data/shippingCost";
-
+import CancelIcon from '@material-ui/icons/Cancel';
+import Red from "@material-ui/core/colors/red";
+import {removeFromCart} from "../Data/cartFoods";
 export default function CartTable(props : {foods: IFakeFood[]}){
     let subTotal : number = 0.00;
 
@@ -30,6 +32,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     <TableCell align="left">Price</TableCell>
                                     <TableCell align="left">Quantity</TableCell>
                                     <TableCell align="left">SubTotal</TableCell>
+                                    <TableCell align="left">Cancel</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -41,6 +44,13 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                         <TableCell align="left">৳ {food.price}</TableCell>
                                         <TableCell align="left">{food.quantity}</TableCell>
                                         <TableCell align="left">৳ {food.price * food.quantity}</TableCell>
+                                        <TableCell align="left">
+                                            <IconButton onClick={()=> removeFromCart()}>
+                                                <CancelIcon style={{
+                                                    color: Red[700]
+                                                }}/>
+                                            </IconButton>
+                                        </TableCell>
                                         <Hidden xsUp>{subTotal += food.price * food.quantity}</Hidden>
                                     </TableRow>
                                 ))}

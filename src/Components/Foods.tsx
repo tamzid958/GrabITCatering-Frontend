@@ -12,13 +12,11 @@ import {
 import Orange from "@material-ui/core/colors/orange";
 import {IFood} from "../Interfaces/DataInterfaces";
 import {addToCart} from "../Data/cartFoods";
-import {toast, ToastContainer} from "react-toastify";
 import React from "react";
 
 export default function Foods(props : { foods: IFood[] }){
     return(
         <Container fixed style={{ marginTop: 50 }}>
-            <ToastContainer />
             <Grid container spacing={5}>
                 {props.foods.map((food : IFood) => (
                     <Grid item xs={6} sm={3} key={food.id}>
@@ -58,7 +56,6 @@ export default function Foods(props : { foods: IFood[] }){
                                     cursor: "pointer"
                                 }} onClick={() => {
                                     console.log(addToCart(food.id, 1))
-                                    toast.success("Added to cart.");
                                 }}>
                                    Add To Cart
                                 </Link>

@@ -5,6 +5,7 @@ import GrabitRouter from "./Router/Router";
 import {MuiThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
 import Yellow from "@material-ui/core/colors/yellow";
 import Grey from "@material-ui/core/colors/grey";
+import {ToastContainer} from "react-toastify";
 
 const theme = createMuiTheme({
     palette: {
@@ -19,6 +20,7 @@ export default function App() {
   return(
       <MuiThemeProvider theme={theme}>
           <div className="App">
+              <ToastContainer/>
               <GrabitRouter/>
           </div>
       </MuiThemeProvider>

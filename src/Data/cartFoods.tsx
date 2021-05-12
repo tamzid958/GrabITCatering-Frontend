@@ -1,5 +1,6 @@
 import {ICartFood, IFakeFood} from "../Interfaces/DataInterfaces";
 import {allFoods, getFoodInformation} from "./foods";
+import {toast} from "react-toastify";
 
 const allCartFoods : ICartFood[] = cartFoods();
 
@@ -12,6 +13,7 @@ function cartFoods() : ICartFood[]{
 }
 
 export function addToCart(foodId: number, quantity: number) : ICartFood{
+    toast.success("Added To Cart");
     return {foodId, quantity};
 }
 
@@ -38,4 +40,8 @@ export function getCartFoods() : IFakeFood[]{
         }
     })
     return cartFoods;
+}
+
+export function removeFromCart (){
+    toast.error("Removed From Cart");
 }
