@@ -34,7 +34,7 @@ export default function FoodCategories(props : {foodCategories: IFoodCategory[]}
                            <span style={{
                                fontSize: 15,
                                fontWeight: "lighter",
-                               whiteSpace: "pre-line"
+                               whiteSpace: isScreenSmall? "normal" : "pre-line"
                            }} >
                                {foodCategory.subtitle}
                            </span> <br/> <br/>
