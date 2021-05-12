@@ -9,6 +9,7 @@ import {Redirect, useParams} from "react-router";
 import {ParamTypes} from "../Interfaces/URLParams";
 import React from "react";
 import {IFood} from "../Interfaces/DataInterfaces";
+import SocialMeta from "../Components/SocialMeta";
 
 export default function FoodPage(){
     const { id } = useParams<ParamTypes>();
@@ -20,6 +21,7 @@ export default function FoodPage(){
 
     return (
         <div>
+            <SocialMeta social={food}/>
             <Navbar/>
             <FoodDisplay food={food}/>
             <DescriptionAndReview food={food}/>
