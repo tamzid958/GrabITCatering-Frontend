@@ -7,6 +7,7 @@ function cartFoods() : ICartFood[]{
     return [
         {foodId: 1, quantity: 2},
         {foodId: 1, quantity: 2},
+        {foodId: 2, quantity: 2},
     ];
 }
 
@@ -21,9 +22,20 @@ export function getCartFoods() : IFakeFood[]{
 
     allCartFoods.forEach(function (cartFood : ICartFood){
         let currentFood = getFoodInformation(allFoods, cartFood.foodId);
-        if(currentFood !== undefined) cartFoods.push({id: id++, foodId: currentFood.id,
-            title: currentFood.title, price: currentFood.price,
-            quantity: cartFood.quantity});
+        if(currentFood !== undefined) {
+            let existingFood = cartFoods.find(e => e.foodId === currentFood!.id);
+
+            if( existingFood === undefined ){
+                cartFoods.push({
+                    id: id++, foodId: currentFood.id,
+                    title: currentFood.title, price: currentFood.price,
+                    quantity: cartFood.quantity
+                });
+            }
+            else{
+                existingFood.quantity += cartFood.quantity;
+            }
+        }
     })
     return cartFoods;
 }
