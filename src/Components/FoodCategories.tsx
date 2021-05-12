@@ -7,15 +7,13 @@ import {
 import {IFoodCategory} from "../Interfaces/DataInterfaces";
 
 export default function FoodCategories(props : {foodCategories: IFoodCategory[]}){
-    let column = 5;
+    let isScreenSmall = false;
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    if(matches){
-        column = 2;
-    }
+    if(matches) isScreenSmall = true;
     return(
         <Container fixed style={{ marginTop: 50 }}>
-            <GridList cellHeight={500} cols={column} style={{
+            <GridList cellHeight={isScreenSmall? 200 : 500} cols={isScreenSmall? 2 : 5} style={{
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
@@ -27,7 +25,7 @@ export default function FoodCategories(props : {foodCategories: IFoodCategory[]}
                         }}/>
                         <div style={{
                             position: 'absolute',
-                            top: "60%",
+                            top: isScreenSmall? "20%" : "60%",
                             left: '20px',
                             fontSize: 18,
                             color: 'whitesmoke',
@@ -41,7 +39,7 @@ export default function FoodCategories(props : {foodCategories: IFoodCategory[]}
                            }} >
                                {foodCategory.subtitle}
                            </span> <br/> <br/>
-                            <Button variant="contained" href={`/categories/${foodCategory.id}`}>
+                            <Button variant="contained" href={`/categories/${foodCategory.id}`} size={isScreenSmall? "small": "medium"}>
                                Browse {foodCategory.title}
                             </Button>
                         </div>
