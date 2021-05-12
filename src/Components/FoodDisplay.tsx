@@ -21,7 +21,9 @@ export default function FoodDisplay(props: {food: IFood}){
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={6}>
                     <Grid item xs={12} sm={6}>
-                        <img src={props.food.img} height={500} width={"100%"} alt={props.food.title}/>
+                        <img src={props.food.img} height={500} width={"100%"} alt={props.food.title} style={{
+                            objectFit: "cover",
+                        }}/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Typography variant="body1" style={{
