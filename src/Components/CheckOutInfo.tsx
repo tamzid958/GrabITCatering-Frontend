@@ -24,7 +24,7 @@ import {IFakeFood} from "../Interfaces/DataInterfaces";
 
 
 export default function CheckOutInfo(props: {foods: IFakeFood[]}){
-    let subTotal : number = 0.00;
+    let subTotal : number = 0;
 
     const [value, setValue] = React.useState({paymentMethod: PaymentMethodEnum.cashOnDelivery});
     const [state, setState] = React.useState({checkedAgreement: true});
@@ -142,7 +142,7 @@ export default function CheckOutInfo(props: {foods: IFakeFood[]}){
                                         <Typography variant="h5" component="h2" style={{
                                             fontWeight: "bold"
                                         }}>
-                                            ৳ {subTotal}
+                                            ৳ {subTotal !== 0 ? subTotal : "0.00" }
                                         </Typography>
                                     </Grid>
                                 </Grid>
@@ -179,7 +179,7 @@ export default function CheckOutInfo(props: {foods: IFakeFood[]}){
                                         <Typography variant="h5" component="h2" style={{
                                             fontWeight: "bold"
                                         }}>
-                                            ৳ {subTotal !== 0.00? (subTotal + shippingCost) : 0.00}
+                                            ৳ {subTotal !== 0? (subTotal + shippingCost) : "0.00"}
                                         </Typography>
                                     </Grid>
                                 </Grid>

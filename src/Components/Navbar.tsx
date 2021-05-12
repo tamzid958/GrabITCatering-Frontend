@@ -10,7 +10,7 @@ import {IFakeFood} from "../Interfaces/DataInterfaces";
 
 export default function Navbar(){
     let quantity = 0;
-    let subTotal = 0.00;
+    let subTotal = 0;
     let cartFoods : IFakeFood[] = getCartFoods();
 
     cartFoods.forEach(function (cartFood : IFakeFood){
@@ -64,7 +64,7 @@ export default function Navbar(){
                         <Typography variant="h6" style={{
                             fontWeight: "bolder"
                         }}>
-                            ৳ {subTotal}
+                            ৳ {subTotal !== 0 ? subTotal : "0.00" }
                         </Typography>
                     </Grid>
                     <Grid item>

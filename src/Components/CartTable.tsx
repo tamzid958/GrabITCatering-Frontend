@@ -18,7 +18,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import Red from "@material-ui/core/colors/red";
 import {removeFromCart} from "../Data/cartFoods";
 export default function CartTable(props : {foods: IFakeFood[]}){
-    let subTotal : number = 0.00;
+    let subTotal : number = 0;
 
     return(
         <Container fixed style={{marginTop: 50}}>
@@ -45,7 +45,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                         <TableCell align="left">{food.quantity}</TableCell>
                                         <TableCell align="left">৳ {food.price * food.quantity}</TableCell>
                                         <TableCell align="left">
-                                            <IconButton onClick={()=> removeFromCart()}>
+                                            <IconButton onClick={() => removeFromCart(food.foodId)}>
                                                 <CancelIcon style={{
                                                     color: Red[700]
                                                 }}/>
@@ -79,7 +79,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     <Typography variant="h5" component="h2" style={{
                                         fontWeight: "bold"
                                     }}>
-                                        ৳ {subTotal}
+                                        ৳ {subTotal !== 0 ? subTotal : "0.00" }
                                     </Typography>
                                 </Grid>
                             </Grid>
@@ -116,7 +116,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     <Typography variant="h5" component="h2" style={{
                                         fontWeight: "bold"
                                     }}>
-                                        ৳ {subTotal !== 0.00? (subTotal + shippingCost) : 0.00}
+                                        ৳ {subTotal !== 0? (subTotal + shippingCost) : "0.00"}
                                     </Typography>
                                 </Grid>
                             </Grid>

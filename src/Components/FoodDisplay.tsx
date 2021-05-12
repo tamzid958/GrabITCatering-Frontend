@@ -14,7 +14,7 @@ export default function FoodDisplay(props: {food: IFood}){
     const onSubmit = (data: QuantityFormInput) =>{
         data.foodId = props.food.id;
         if(data.quantity === undefined) data.quantity = 1;
-        console.log(addToCart(data.foodId, data.quantity));
+        console.log(addToCart(data.foodId, parseInt(String(data.quantity))));
     }
     return (
         <Container fixed style={{ marginTop: 50 }}>
