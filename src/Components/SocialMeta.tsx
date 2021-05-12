@@ -1,7 +1,9 @@
 import {Helmet, HelmetProvider} from "react-helmet-async";
 import React from "react";
+import {Iseo} from "../Interfaces/SEOInterface";
 
-export default function SocialMeta(props : any){
+export default function SocialMeta(props : { social : Iseo }){
+    console.log(props.social.img);
     return(
         <HelmetProvider>
             <Helmet>

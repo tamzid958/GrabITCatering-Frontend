@@ -10,18 +10,19 @@ import {ParamTypes} from "../Interfaces/URLParams";
 import React from "react";
 import {IFood} from "../Interfaces/DataInterfaces";
 import SocialMeta from "../Components/SocialMeta";
+import {Iseo} from "../Interfaces/SEOInterface";
 
 export default function FoodPage(){
     const { id } = useParams<ParamTypes>();
     let relatedFoods : IFood[] = [];
     let food = getFoodInformation(allFoods, Number(id));
     if(food === undefined) return (<Redirect to={"/"}/>);
-
     relatedFoods = getCategorizedFoodInformation(allFoods, food.categoryId);
+    let seo : Iseo = {title: food.title, description: food.description, img: "https://" + (window.location.hostname + food.img)};
 
     return (
         <div>
-            <SocialMeta social={food}/>
+            <SocialMeta social={seo}/>
             <Navbar/>
             <FoodDisplay food={food}/>
             <DescriptionAndReview food={food}/>
