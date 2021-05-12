@@ -1,6 +1,8 @@
 import {ICartFood, IFakeFood} from "../Interfaces/DataInterfaces";
 import {allFoods, getFoodInformation} from "./foods";
 import {toast} from "react-toastify";
+import {Link} from "@material-ui/core";
+import Grey from "@material-ui/core/colors/grey";
 
 const allCartFoods : ICartFood[] = cartFoods();
 
@@ -13,7 +15,17 @@ function cartFoods() : ICartFood[]{
 }
 
 export function addToCart(foodId: number, quantity: number) : ICartFood{
-    toast.success("Added To Cart");
+    toast.success(()=> {
+        return(
+            <div>
+                Added To Cart.
+                <Link style={{
+                    marginLeft: 5,
+                    color: Grey[50],
+                    textDecoration: "underline"
+                }} href={"/cart"}>Check Cart</Link>
+            </div>
+        )});
     return {foodId, quantity};
 }
 
