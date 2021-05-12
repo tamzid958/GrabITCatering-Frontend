@@ -45,5 +45,6 @@ export interface  ICollectionOrder{
     email: string,
     notes?: string,
     paymentMethod: string,
+    subTotal: number,
     transactionId?: string,
 }

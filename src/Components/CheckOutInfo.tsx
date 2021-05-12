@@ -40,7 +40,7 @@ export default function CheckOutInfo(props: {foods: IFakeFood[]}){
     const { register,  formState: { errors }, handleSubmit } = useForm<CheckOutFormInput>();
     const onSubmit = (data: CheckOutFormInput) => {
         if(data.paymentMethod === undefined) data.paymentMethod = PaymentMethodEnum.cashOnDelivery;
-        makeOrder(data);
+        makeOrder(data, subTotal);
     };
 
     props.foods.forEach(function (cartFood : IFakeFood){
