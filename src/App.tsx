@@ -2,23 +2,14 @@ import React from 'react';
 import './Assets/css/App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import GrabitRouter from "./Router/Router";
-import {MuiThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
-import Yellow from "@material-ui/core/colors/yellow";
-import Grey from "@material-ui/core/colors/grey";
+import {MuiThemeProvider} from "@material-ui/core";
 import {ToastContainer} from "react-toastify";
+import {grabitTheme} from "./Theme/Theme";
 
-const theme = createMuiTheme({
-    palette: {
-        secondary: {
-            main: Yellow[700],
-            contrastText: Grey[50],
-        }
-    }
-});
 
 export default function App() {
   return(
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={grabitTheme}>
           <div className="App">
               <ToastContainer/>
               <GrabitRouter/>
