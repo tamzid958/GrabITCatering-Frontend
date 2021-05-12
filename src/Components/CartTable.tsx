@@ -133,7 +133,6 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     }} href="/checkout">Proceed to Checkout</Button>
                             : <Typography variant="h6" style={{
                                     color: Red[700],
-                                    paddingLeft: "30%"
                             }}>
                                 Your Cart is Empty
                                 </Typography>

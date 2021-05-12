@@ -24,15 +24,15 @@ export default function FoodCategories(props : {foodCategories: IFoodCategory[]}
                         }}/>
                         <div style={{
                             position: 'absolute',
-                            top: isScreenSmall? "20%" : "60%",
-                            left: '20px',
-                            fontSize: 18,
+                            top: isScreenSmall? "30%" : "60%",
+                            left: isScreenSmall? '10px' : '20px',
+                            fontSize: isScreenSmall? 14 : 18,
                             color: 'whitesmoke',
                             fontWeight: "bold",
                         }}>
                             GRABIT FT. {foodCategory.title} <br/>
                            <span style={{
-                               fontSize: 15,
+                               fontSize: isScreenSmall? 10 : 15,
                                fontWeight: "lighter",
                                whiteSpace: isScreenSmall? "normal" : "pre-line"
                            }} >
