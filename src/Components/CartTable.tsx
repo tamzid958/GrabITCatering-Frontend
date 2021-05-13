@@ -37,7 +37,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                             </TableHead>
                             <TableBody>
                                 {props.foods.map((food : IFakeFood) => (
-                                    <TableRow key={food.id}>
+                                    <TableRow key={food.foodId}>
                                         <TableCell align="left">
                                             {food.title}
                                         </TableCell>
@@ -133,6 +133,7 @@ export default function CartTable(props : {foods: IFakeFood[]}){
                                     }} href="/checkout">Proceed to Checkout</Button>
                             : <Typography variant="h6" style={{
                                     color: Red[700],
+                                    marginLeft: 10,
                             }}>
                                 Your Cart is Empty
                                 </Typography>

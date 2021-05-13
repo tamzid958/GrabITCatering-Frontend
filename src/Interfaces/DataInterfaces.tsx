@@ -17,25 +17,25 @@ export interface IFoodCategory{
     subtitle: string,
 }
 
+//shortname for storing data into local storage
 export interface ICartFood{
-    foodId: number,
-    quantity: number
+    i: number, //id
+    q: number //quantity
 }
 
 export interface IFakeFood{
-    id: number,
     foodId: number,
     title: string,
     price: number,
     quantity: number,
 }
-export interface IMakeOrder{
+export interface ICollectionOrder{
     orderId : string,
     foodId: number,
     quantity: number,
 }
 
-export interface  ICollectionOrder{
+export interface  IMakeOrder{
     orderId: string,
     firstName: string,
     lastName: string,

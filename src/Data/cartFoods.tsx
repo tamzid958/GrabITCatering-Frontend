@@ -10,20 +10,20 @@ export function addToCart(foodId: number, quantity: number) : ICartFood{
 
     if(initialLocalStoredCartFoods){
         sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
-        let existingCartFood = sessionCartFoods.find(e => e.foodId === foodId);
+        let existingCartFood = sessionCartFoods.find(e => e.i === foodId);
         if(existingCartFood !== undefined){
-            let tempQuantity = existingCartFood.quantity + quantity;
+            let tempQuantity = existingCartFood.q + quantity;
             sessionCartFoods = cartFoodRemoveMethod(sessionCartFoods, existingCartFood);
-            sessionCartFoods.push({ foodId: foodId, quantity: tempQuantity});
+            sessionCartFoods.push({ i: foodId, q: tempQuantity});
             localStorage.setItem("cartFoods", JSON.stringify(sessionCartFoods));
         }
         else{
-            sessionCartFoods.push({foodId, quantity});
+            sessionCartFoods.push({i:foodId, q:quantity});
             localStorage.setItem("cartFoods", JSON.stringify(sessionCartFoods));
         }
     }
     else{
-        sessionCartFoods.push({foodId, quantity});
+        sessionCartFoods.push({i:foodId, q:quantity});
         localStorage.setItem("cartFoods", JSON.stringify(sessionCartFoods));
     }
     toast.success(()=> {
@@ -40,26 +40,24 @@ export function addToCart(foodId: number, quantity: number) : ICartFood{
         {
             onClose: () => window.location.reload()
         });
-    return {foodId, quantity};
+    return {i:foodId, q:quantity};
 }
 
 export function getCartFoods() : IFakeFood[]{
     let initialLocalStoredCartFoods =  localStorage.getItem("cartFoods");
     let sessionCartFoods : ICartFood[] = [];
     let cartFoods : IFakeFood[] = [];
-    let id: number = 1;
 
     if(initialLocalStoredCartFoods){
         sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
     }
 
     sessionCartFoods.forEach(function (cartFood : ICartFood){
-        let currentFood = getFoodInformation(allFoods, cartFood.foodId);
+        let currentFood = getFoodInformation(allFoods, cartFood.i);
         if(currentFood !== undefined) {
-            cartFoods.push({
-                id: id++, foodId: currentFood.id,
+            cartFoods.push({foodId: currentFood.id,
                 title: currentFood.title, price: currentFood.price,
-                quantity: cartFood.quantity
+                quantity: cartFood.q
             });
         }
     })
@@ -72,7 +70,7 @@ export function removeFromCart (id: number){
 
     if(initialLocalStoredCartFoods){
         sessionCartFoods = JSON.parse(initialLocalStoredCartFoods);
-        let selectedForRemovingCartFood = sessionCartFoods.find(e => e.foodId === id);
+        let selectedForRemovingCartFood = sessionCartFoods.find(e => e.i === id);
         if(selectedForRemovingCartFood !== undefined){
             sessionCartFoods = cartFoodRemoveMethod(sessionCartFoods, selectedForRemovingCartFood);
             localStorage.setItem("cartFoods", JSON.stringify(sessionCartFoods));
