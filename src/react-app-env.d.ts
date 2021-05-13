@@ -5,3 +5,4 @@ declare module '*.webm' {
 }
 declare module 'react-router-dom';
 declare module 'react-helmet-async';
+declare module 'public-ip';

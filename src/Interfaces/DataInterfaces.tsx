@@ -48,3 +48,9 @@ export interface  IMakeOrder{
     subTotal: number,
     transactionId?: string,
 }
+
+export interface IRating{
+    foodId: number,
+    rating: number,
+    raterIP: string,
+}

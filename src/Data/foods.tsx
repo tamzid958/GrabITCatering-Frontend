@@ -1,6 +1,7 @@
 import Pizza from "../Assets/images/pizza-pizza-filled-with-tomatoes-salami-olives.jpg";
-import {IFood} from "../Interfaces/DataInterfaces";
-
+import {IFood, IRating} from "../Interfaces/DataInterfaces";
+import {toast} from "react-toastify";
+import publicIP from 'public-ip';
 export const allFoods: IFood[] = foods();
 
 
@@ -29,4 +30,25 @@ export function getFoodInformation(foods: IFood[], id: number) {
 
 export function getCategorizedFoodInformation(foods: IFood[], categoryId: number) {
     return foods.filter(e => e.categoryId === categoryId);
+}
+
+export async function giveFoodRating(foodId: number, rating: number): Promise<IRating> {
+    let raterIP: string = await publicIP.v4({
+        fallbackUrls: [
+            'https://ifconfig.co/ip'
+        ]
+    });
+    if (rating === 5) {
+        toast.success("Hooray! You loved our art! 🥰");
+    } else if (rating === 4) {
+        toast.info("Happy to hear that you are satisfied! 😊");
+    } else if (rating === 3) {
+        toast.warning("Sorry, upcoming food will be yummy! 🥺");
+    } else if (rating === 2) {
+        toast.error("Next time your mood will be best! 😔");
+    } else if (rating === 1) {
+        toast.dark("Don't go away. We want you to smile! 😭");
+    }
+    console.log(foodId, rating, raterIP);
+    return {foodId, rating, raterIP};
 }

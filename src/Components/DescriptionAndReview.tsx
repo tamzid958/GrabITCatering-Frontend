@@ -1,10 +1,10 @@
-import {Button, Container, Paper, Tab, Tabs, Typography} from "@material-ui/core";
+import {Container, Paper, Tab, Tabs, Typography} from "@material-ui/core";
 import React from "react";
 import {tabProps, TabPanel} from "../Interfaces/TabPanel";
-import Orange from "@material-ui/core/colors/orange";
 import Rating from '@material-ui/lab/Rating';
 import {customIcons, IconContainer} from "../Interfaces/RatingBar";
 import {IFood} from "../Interfaces/DataInterfaces";
+import {giveFoodRating} from "../Data/foods";
 
 export default function DescriptionAndReview(props: { food: IFood }){
     const [value, setValue] = React.useState(0);
@@ -41,15 +41,11 @@ export default function DescriptionAndReview(props: { food: IFood }){
                             defaultValue={4}
                             getLabelText={(value: number) => customIcons[value].label}
                             IconContainerComponent={IconContainer}
+                            onChange={(event, newValue) => {
+                                if(newValue === null) newValue = 5;
+                                giveFoodRating(props.food.id, newValue);
+                            }}
                         />
-                        <Button size="large" variant="contained"
-                                style={{
-                                    marginLeft: 20,
-                                    backgroundColor: Orange[700],
-                                    fontWeight: "bold",
-                                    color: "whitesmoke",
-                                }}>Give A Review
-                        </Button>
                     </div>
                 </TabPanel>
         </Container>
